@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en-zh">
+<head>
+    <meta charset="UTF-8">
+    <title>城市天气实时查询</title>
+    <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="main.css">
+    <link rel="manifest"  href="manifest.json">
+    <script src="jquery-3.4.1.min.js"></script>
+</head>
+<body>
+    <div class="page">
+        <h3>城市天气实时查询</h3>
+        <img src="./pwaIcon.jpg">
+
+        <div>
+            <input type="text" id="city-input" class="inp-block">
+            <button class="search-btn">search</button>
+        </div>
+        <div class="search-content"></div>
+    </div>
+    <script type="text/javascript">
+        if(navigator.serviceWorker!=null){//判断是否支持serviceWorker
+             //加载相关serviceWorker脚本
+            navigator.serviceWorker.register('sw.js').then(function(registartion){
+                console.log('support sw',registartion.scope)
+            })
+        }
+    </script>
+    <script>
+        $('.search-btn').on('click', function () {
+            var city = $('#city-input').val()
+            $.ajax({
+                url: "https://www.apiopen.top/weatherApi?city=" + city,
+                type: "GET",
+                dataType: "json",
+                success: function(data) {
+                    if (data.code === 201) {
+                        alert(data.msg)
+                        return
+                    }
+                    // data = jQuery.parseJSON(data);  //dataType指明了返回数据为json类型，故不需要再反序列化
+                    $('.search-content').append("城市: <b>" + data.data.city + "</b><br>" + data.data.forecast[0].type +
+                                                "</b><br>日期:<b>" + data.data.forecast[0].date +
+                                                "</b><br>温度: <b>" + data.data.forecast[0].low + "~" + data.data.forecast[0].high + "</b><br>")
+                },
+                error: function (err) {
+                    throw(err)
+                }
+            })
+        })
+    </script>
+</body>
+</html>
