@@ -1,4 +1,4 @@
-var cacheStorageKey='check-demo-1.1' //版本号，当想更新缓存资源（文件、数据等）
+var cacheStorageKey='check-demo-2.0' //版本号，当想更新缓存资源（文件、数据等）
 var cacheList=[
     './',
     './jquery-3.4.1.min.js',
