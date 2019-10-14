@@ -2,11 +2,7 @@ importScripts('https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox
 
 var cacheStorageKey='check-demo-2.0' //版本号，当想更新缓存资源（文件、数据等）
 var cacheList=[
-    './',
-    './jquery-3.4.1.min.js',
-    './index.html',
-    './main.css',
-    './pwaIcon.jpg'
+
 ] //需要缓存的文件路径
 //当脚本加载完毕执行
 self.addEventListener('install',function(e){
@@ -25,7 +21,9 @@ self.addEventListener('install',function(e){
 
 workbox.routing.registerRoute(
     new RegExp('.*\.css'),
-    new workbox.strategies.NetworkFirst()
+    new workbox.strategies.NetworkFirst({
+        cacheName: cacheStorageKey
+    })
 );
 // //缓存通过fetch获取的数据
 // self.addEventListener('fetch',function(e){
