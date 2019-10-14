@@ -1,6 +1,6 @@
 importScripts('https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js');
 
-var cacheStorageKey='check-demo-2.0' //版本号，当想更新缓存资源（文件、数据等）
+var cacheStorageKey='check-demo-2.1' //版本号，当想更新缓存资源（文件、数据等）
 var cacheList=[
 
 ] //需要缓存的文件路径
