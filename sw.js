@@ -7,7 +7,7 @@ var cacheList=[
 // //当脚本加载完毕执行
 self.addEventListener('install',function(e){
     e.waitUntil(
-        创建缓存并缓存cacheList的所以文件
+        // 创建缓存并缓存cacheList的所以文件
         caches.open(cacheStorageKey)
             .then(function(cache){
                 return cache.addAll(cacheList)
