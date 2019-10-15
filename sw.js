@@ -22,7 +22,7 @@ importScripts('https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox
 workbox.routing.registerRoute(
     new RegExp('.*\.css'),
     new workbox.strategies.StaleWhileRevalidate({
-        cacheName: cssCache
+        cacheName: 'cssCache'
     })
 );
 // //缓存通过fetch获取的数据
