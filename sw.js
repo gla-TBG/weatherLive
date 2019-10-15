@@ -1,22 +1,21 @@
 importScripts('https://storage.googleapis.com/workbox-cdn/releases/3.4.1/workbox-sw.js');
 
-// var cacheStorageKey='check-demo-2.2' //版本号，当想更新缓存资源（文件、数据等）
-// var cacheList=[
-//
-// ] //需要缓存的文件路径
+var cacheStorageKey='check-demo-2.3' //版本号，当想更新缓存资源（文件、数据等）
+var cacheList=[
+
+] //需要缓存的文件路径
 // //当脚本加载完毕执行
 self.addEventListener('install',function(e){
     e.waitUntil(
-        // 创建缓存并缓存cacheList的所以文件
-        // caches.open(cacheStorageKey)
-        //     .then(function(cache){
-        //         return cache.addAll(cacheList)
-        //     })
-        //     .then(function(){
-        //         //使用了一个方法那就是 self.skipWaiting( ) ，为了在页面更新的过程当中，新的 SW 脚本能够立刻激活和生效
-        //         return self.skipWaiting()
-        //     })
-        self.skipWaiting()
+        创建缓存并缓存cacheList的所以文件
+        caches.open(cacheStorageKey)
+            .then(function(cache){
+                return cache.addAll(cacheList)
+            })
+            .then(function(){
+                //使用了一个方法那就是 self.skipWaiting( ) ，为了在页面更新的过程当中，新的 SW 脚本能够立刻激活和生效
+                return self.skipWaiting()
+            })
         )
 })
 
