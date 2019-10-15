@@ -1,4 +1,4 @@
-importScripts('https://storage.googleapis.com/workbox-cdn/releases/3.4.1/workbox-sw.js');
+importScripts('https://storage.googleapis.com/workbox-cdn/releases/3.0.0/workbox-sw.js');
 
 // var cacheStorageKey='check-demo-2.2' //版本号，当想更新缓存资源（文件、数据等）
 // var cacheList=[
@@ -28,6 +28,8 @@ workbox.routing.registerRoute(
         cacheName: 'cssCache'
     })
 );
+
+
 // //缓存通过fetch获取的数据
 // self.addEventListener('fetch',function(e){
 //     if (e.request.url.indexOf('/main.css') !== -1) {
