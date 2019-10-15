@@ -1,4 +1,4 @@
-importScripts('https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js');
+importScripts('https://storage.googleapis.com/workbox-cdn/releases/3.4.1/workbox-sw.js');
 
 // var cacheStorageKey='check-demo-2.2' //版本号，当想更新缓存资源（文件、数据等）
 // var cacheList=[
@@ -7,8 +7,8 @@ importScripts('https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox
 // //当脚本加载完毕执行
 self.addEventListener('install',function(e){
     e.waitUntil(
-        //创建缓存并缓存cacheList的所以文件
-        //     caches.open(cacheStorageKey)
+        // 创建缓存并缓存cacheList的所以文件
+        // caches.open(cacheStorageKey)
         //     .then(function(cache){
         //         return cache.addAll(cacheList)
         //     })
@@ -22,7 +22,7 @@ self.addEventListener('install',function(e){
 
 workbox.routing.registerRoute(
     new RegExp('.*\.css'),
-    new workbox.strategies.StaleWhileRevalidate({
+    workbox.strategies.staleWhileRevalidate({
         cacheName: 'cssCache'
     })
 );
